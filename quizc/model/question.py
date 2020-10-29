@@ -5,6 +5,9 @@ class Question(object):
         self.validations = validations
         self.additional_data = []
 
+    def __str__(self):
+        return self.title
+
 
 class QuestionBuilder(object):
     def __init__(self, title, question_type):
@@ -24,3 +27,5 @@ class QuestionBuilder(object):
         if len(self.additional_data) > 0:
             question.additional_data = self.additional_data
         return question
+
+

@@ -16,3 +16,10 @@ class Answer(object):
         self.question = question
         self.answers = answers
 
+    def __str__(self):
+        message = ''
+        for answer in self.answers:
+            message = f'Title: {self.question}  ' \
+                      f'Answer: {answer}'
+        return message
+

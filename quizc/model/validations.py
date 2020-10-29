@@ -30,6 +30,8 @@ class MinValidator(object):
 
 
 class MinLengthValidator(object):
+    """"This function can also be used as the MAX function to control
+    that no more is written than is expected or needed"""
     MESSAGE = "The value length must be less than {max_length}"
 
     def validate(self, value, condition_value, errors):
@@ -37,11 +39,20 @@ class MinLengthValidator(object):
             errors.append(self.MESSAGE.format(max_length=condition_value))
 
 
+class OnlyUpperCase(object):
+    MESSAGE = "It has to be in Uppercase"
+
+    def validate(self, value: str, condition_value, errors):
+        if value != value.upper():
+            errors.append(self.MESSAGE)
+
+
 class ValidatorType(Enum):
     REQUIRED = (1, RequiredValidator())
     DATE = (2, DateValidator())
     MIN = (3, MinValidator())
     MIN_LENGTH = (4, MinLengthValidator())
+    ONlY_UPPERCASE = (5, OnlyUpperCase())
 
     def __init__(self, code, validator_instance):
         self.code = code

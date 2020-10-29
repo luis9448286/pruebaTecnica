@@ -14,7 +14,7 @@ class QuestionConfiguration(object):
 
 class TextConfiguration(QuestionConfiguration):
     def __init__(self):
-        QuestionConfiguration.__init__(self, False, [ValidatorType.REQUIRED, ValidatorType.MIN_LENGTH])
+        QuestionConfiguration.__init__(self, False, [ValidatorType.REQUIRED, ValidatorType.MIN_LENGTH, ValidatorType.ONlY_UPPERCASE])
 
 
 class DateConfiguration(QuestionConfiguration):
