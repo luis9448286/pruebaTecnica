@@ -35,10 +35,22 @@ class PickOneQuestionConfiguration(QuestionConfiguration):
         QuestionConfiguration.__init__(self, True, [ValidatorType.REQUIRED])
 
 
+class NumericQuestionConfiguration(QuestionConfiguration):
+    def __init__(self):
+        QuestionConfiguration.__init__(self, True, [ValidatorType.REQUIRED, ValidatorType.MIN])
+
+    def convert_value(self, value):
+        try:
+            return int(value)
+        except ValueError:
+            return None
+
+
 class QuestionType(Enum):
     TEXT = (1, TextConfiguration())
     DATE = (2, DateConfiguration())
     PICK_ONE = (3, PickOneQuestionConfiguration())
+    NUMERIC = (4, NumericQuestionConfiguration())
 
     def __init__(self, code, configuration):
         self.code = code
