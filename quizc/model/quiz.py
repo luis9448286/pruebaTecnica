@@ -5,4 +5,3 @@ class Quiz(object):
 
     def add_question(self, question):
         self.questions.append(question)
-
